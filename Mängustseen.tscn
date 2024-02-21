@@ -1,4 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://ca5l0ugmpoxds"]
+[gd_scene load_steps=4 format=3 uid="uid://ca5l0ugmpoxds"]
+
+[ext_resource type="PackedScene" uid="uid://cui8sdokw22sn" path="res://Tegelane.tscn" id="1_fwtjl"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_vfp46"]
 
@@ -15,3 +17,12 @@ mesh = SubResource("BoxMesh_vfp46")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Põrand"]
 shape = SubResource("BoxShape3D_of8ry")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.759101, 3.15192e-09, -0.650973, -0.58387, 0.442195, 0.680852, 0.287857, 0.896919, -0.33567, 0, 6.08559, 0)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.324693, 0.945819, 0, -0.945819, 0.324693, 0, 18.3044, 5.60166)
+
+[node name="Tegelane" parent="." instance=ExtResource("1_fwtjl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.98281, 0)

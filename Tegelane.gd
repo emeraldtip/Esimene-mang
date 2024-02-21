@@ -20,3 +20,20 @@ func _physics_process(delta):
 		suund.z += 1
 	if Input.is_action_pressed("edasi"):
 		suund.z -= 1
+	
+	
+	if suund != Vector3.ZERO:
+		suund = suund.normalized()
+		$Telg.basis = Basis.looking_at( 	suund);
+		
+	
+	siht_kiirus.x = suund.x * kiirus
+	siht_kiirus.z = suund.z * kiirus
+	
+	if not is_on_floor():
+		siht_kiirus.y = siht_kiirus.y - (langus_kiirendus * delta)
+
+	
+	velocity = siht_kiirus
+	move_and_slide()
+	
