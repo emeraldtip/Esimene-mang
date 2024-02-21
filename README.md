@@ -9,7 +9,7 @@
 
 ![image](https://github.com/emeraldtip/Esimene-mang/assets/48155462/043ce8ef-e107-4716-9853-2c305d8d1007)
 
-3. Jooksuta faili => tekib kaust Esimene-mang:
+3. Jooksuta faili => tekib kaust Esimene-mang (kui hüppab üles teade Windows kaitses teie arvutit, vajutage "lisateave" ja seejärel "jooksuta ikkagi"):
 
 ![image](https://github.com/emeraldtip/Esimene-mang/assets/48155462/97e603b9-a4ba-466e-aa2a-066467ddd7a6)
 
