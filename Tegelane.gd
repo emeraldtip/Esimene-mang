@@ -4,6 +4,8 @@ extends CharacterBody3D
 @export var kiirus = 14
 #Gravitatsiooni kiirendus
 @export var langus_kiirendus = 75
+#Hüppe tugevus
+@export var hyppe_tugevus = 20
 
 var siht_kiirus = Vector3.ZERO
 
@@ -29,6 +31,9 @@ func _physics_process(delta):
 	
 	siht_kiirus.x = suund.x * kiirus
 	siht_kiirus.z = suund.z * kiirus
+	
+	if is_on_floor() and Input.is_action_just_pressed("hype"):
+		siht_kiirus.y = hyppe_tugevus
 	
 	if not is_on_floor():
 		siht_kiirus.y = siht_kiirus.y - (langus_kiirendus * delta)
