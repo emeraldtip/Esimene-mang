@@ -4,4 +4,9 @@ FOR /F "USEBACKQ TOKENS=2,*" %%a IN (
 	SET DOWNLOADS=%%b
 )
 cd %DOWNLOADS%
-git clone https://github.com/emeraldtip/Esimene-mang.git
+if exist Esimene-mang\ (
+	cd Esimene-mang
+	git pull
+) else (
+	git clone https://github.com/emeraldtip/Esimene-mang.git
+)
