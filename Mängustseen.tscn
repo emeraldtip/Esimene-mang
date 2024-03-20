@@ -1,17 +1,34 @@
-[gd_scene load_steps=4 format=3 uid="uid://ca5l0ugmpoxds"]
+[gd_scene load_steps=8 format=3 uid="uid://ca5l0ugmpoxds"]
 
 [ext_resource type="PackedScene" uid="uid://cui8sdokw22sn" path="res://Tegelane.tscn" id="1_fwtjl"]
+[ext_resource type="Script" path="res://Mängustseen.gd" id="1_p054w"]
 [ext_resource type="PackedScene" uid="uid://ckmp4dn6e1qq6" path="res://Parkuur.tscn" id="2_2hhjy"]
+[ext_resource type="PackedScene" uid="uid://bcu0h5wae1uk" path="res://kera.tscn" id="2_rtebd"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_vfp46"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_bees7"]
+size = Vector3(19.835, 1, 19.955)
+
+[sub_resource type="Curve3D" id="Curve3D_23h0n"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -9.44153, 0.540775, -9.64361, 0, 0, 0, 0, 0, 0, 9.45374, 0.539676, -9.86764, 0, 0, 0, 0, 0, 0, 9.97305, 0.434852, 9.35586, 0, 0, 0, 0, 0, 0, -10.1876, 0.77011, 9.3336, 0, 0, 0, 0, 0, 0, -9.91694, 0.729178, -9.48164),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0)
+}
+point_count = 5
+
 [node name="Node3D" type="Node3D"]
+script = ExtResource("1_p054w")
+kera = ExtResource("2_rtebd")
 
 [node name="Põrand" type="StaticBody3D" parent="."]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Põrand"]
 transform = Transform3D(20, 0, 0, 0, 1, 0, 0, 0, 20, 0, 0, 0)
 mesh = SubResource("BoxMesh_vfp46")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Põrand"]
+shape = SubResource("BoxShape3D_bees7")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.759101, 3.15192e-09, -0.650973, -0.58387, 0.442195, 0.680852, 0.287857, 0.896919, -0.33567, 0, 6.08559, 0)
@@ -22,4 +39,16 @@ transform = Transform3D(1, 0, 0, 0, 0.324693, 0.945819, 0, -0.945819, 0.324693, 
 [node name="Tegelane" parent="." instance=ExtResource("1_fwtjl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.98281, 0)
 
-[node name="untitled" parent="." instance=ExtResource("2_2hhjy")]
+[node name="parkuurirada" parent="." instance=ExtResource("2_2hhjy")]
+
+[node name="Path3D" type="Path3D" parent="."]
+curve = SubResource("Curve3D_23h0n")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="Path3D"]
+transform = Transform3D(0.0118556, 5.8154e-05, -0.99993, -1.81899e-12, 1, 5.81581e-05, 0.99993, -6.895e-07, 0.0118556, -9.44153, 0.540775, -9.64361)
+
+[node name="Kell" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[connection signal="timeout" from="Kell" to="." method="_kell"]
